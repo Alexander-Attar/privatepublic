@@ -1,6 +1,7 @@
 var amount = 0;
 var message = null;
 var asciiCodes = []
+var effect = null;
 
 function init() {
   message = null;
@@ -29,8 +30,16 @@ function setup() {
 
     // black or white background
     var backgroundColor = Math.random() < 0.5 ? 0 : 255;
+
+    // alternate the effects
+    if (effect == 0) {
+      effect = 1;
+    } else {
+      effect = 0;
+    }
+    console.log(effect);
+
     background(backgroundColor);
-    console.log(backgroundColor)
 
     $('#start').hide();
     $('#canvasContainer').show();
@@ -77,8 +86,11 @@ function convertMessage(message) {
   strokeWeight(3);
   stroke(255, 255, 255);
 
-  horizontalLines(message);
-  // verticalLines(message);
+  if (effect == 0) {
+    horizontalLines(message);
+  } else {
+    verticalLines(message);
+  }
 }
 
 function verticalLines(message) {

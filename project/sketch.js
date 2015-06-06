@@ -32,15 +32,15 @@ function setup() {
     var backgroundColor = Math.random() < 0.5 ? 0 : 255;
 
     // alternate the effects
-    if (effect == 0) {
-      effect = 1;
-    } else {
-      effect = 0;
+    var arr = [1, 2, 3];
+    while (rand == effect) {
+      var rand = Math.random();
+      rand *= arr.length;
+      rand = Math.floor(rand);
     }
-    console.log(effect);
 
+    effect = rand;
     background(backgroundColor);
-
     $('#start').hide();
     $('#canvasContainer').show();
     message = $('#message').val();
@@ -88,8 +88,13 @@ function convertMessage(message) {
 
   if (effect == 0) {
     horizontalLines(message);
-  } else {
+  } else if (effect == 1) {
+    verticalLines(message)
+  } else if (effect == 2) {
+    horizontalLines(message);
     verticalLines(message);
+  } else {
+    verticalLines(message)
   }
 }
 

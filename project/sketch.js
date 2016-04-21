@@ -68,8 +68,6 @@ function setup() {
   $( "#canvasContainer" ).click(function() {
     init();
   });
-
-
 }
 
 function draw() {
